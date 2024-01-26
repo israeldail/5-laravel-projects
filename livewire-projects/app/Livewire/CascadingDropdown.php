@@ -8,6 +8,7 @@ class CascadingDropdown extends Component
 {
     public function render()
     {
-        return view('livewire.cascading-dropdown');
+        return view('livewire.cascading-dropdown')
+        ->layout('layouts.app');
     }
 }
