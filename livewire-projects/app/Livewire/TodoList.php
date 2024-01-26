@@ -61,7 +61,7 @@ class TodoList extends Component
     }
 
     public function selectTodos(){
-        //get's all todos by time created in descending order
+        //get's all todos by time created in descending order; assigns todos variable with this array which is then iterable using a for loop
         $this->todos = TodoItem::orderBy('created_at','desc')->get();
     }
 }
