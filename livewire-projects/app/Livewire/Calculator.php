@@ -6,31 +6,47 @@ use Livewire\Component;
 
 class Calculator extends Component
 {
-    public $num1;
-    public $num2;
-    public $total;
+    //initialize numbers for calculator
+    public $number1 = 0;
+    public $number2 = 0;
+    //operations for calculator
+    public string $action = "+";
+    //result variable
+    public float $result = 0;
+    //dynamically disabling "equals" button
+    public bool $disabled = false;
+
     public function render()
     {
-        return view('livewire.calculator');
+        return view('livewire.calculator')
+        ->layout('layouts.app');
+        
     }
 
-    public function add($a,$b) {
-        $total = $a + $b;
-        return $total;
+    public function calculate(){
+        //type casting string to float
+        $num1 = (float) $this->number1;
+        $num2 = (float) $this->number2;
+        //if conditions for each valid operator input
+        if($this->action == "-")
+            $this->result = $num1 - $num2;
+        else if($this->action == "+")
+            $this->result = $num2 + $num1;
+        else if($this->action == "*")
+            $this->result = $num2 * $num1;
+        else if($this->action == "/")
+            $this->result = $num2 / $num2;
+        else if($this->action == "%")
+            $this->result = $num1 / 100 * $num2;
     }
 
-    public function sub($a,$b) {
-        $total = $a - $b;
-        return $total;
+    public function updated($property){
+        //disable button by default when no values are present
+        if($this->number1 == '' || $this->number2 == ''){
+            $this->disabled = true;
+        } else {
+            $this->disabled = false;
+        }
     }
-
-    public function mul($a,$b) {
-        $total = $a * $b;
-        return $total;
-    }
-
-    public function div($a,$b) {
-        $total = $a / $b;
-        return $total;
-    }
+    
 }
