@@ -20,7 +20,7 @@ class CascadingDropdown extends Component
 
     public function render()
     {
-<<<<<<< HEAD
+
         return view('livewire.cascading-dropdown')->layout('layouts.app');
     }
 
@@ -29,9 +29,9 @@ class CascadingDropdown extends Component
             $this->countries = Country::where('continent_id', $this->selectedContinent)->get();
         }
 
-=======
+
         return view('livewire.cascading-dropdown')
-        ->layout('layouts.app');
->>>>>>> ef25661d7a6e836db527e5101cf36125e5dc9a33
+            ->layout('layouts.app');
+
     }
 }
