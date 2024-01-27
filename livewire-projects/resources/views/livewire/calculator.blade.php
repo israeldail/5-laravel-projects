@@ -13,11 +13,10 @@
             <input type="number" wire:model="number2" placeholder="Number 2">
             <button
             class="py-2 px-4 bg-indigo-500 hover:bg-indigo-600 disabled:cursor-not-allowed disabled:bg-opacity-90 rounded text-white"
-            {{$disabled ? disabled : ''}}
              wire:click="calculate"
              >=</button>
         </div>
         <p class="text-3xl">{{ $result }}</p>
     </div>
-    
+
 </div>
