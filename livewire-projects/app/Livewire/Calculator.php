@@ -20,7 +20,7 @@ class Calculator extends Component
     {
         return view('livewire.calculator')
         ->layout('layouts.app');
-        
+
     }
 
     public function calculate(){
@@ -35,7 +35,7 @@ class Calculator extends Component
         else if($this->action == "*")
             $this->result = $num2 * $num1;
         else if($this->action == "/")
-            $this->result = $num2 / $num2;
+            $this->result = $num1 / $num2;
         else if($this->action == "%")
             $this->result = $num1 / 100 * $num2;
     }
@@ -48,5 +48,5 @@ class Calculator extends Component
             $this->disabled = false;
         }
     }
-    
+
 }
