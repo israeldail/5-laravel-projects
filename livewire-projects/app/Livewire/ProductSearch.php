@@ -22,6 +22,7 @@ class ProductSearch extends Component
         }
 
         return view('livewire.product-search', [
+            //makes the products variable accessible from the HTML with paginated property.
             'products' => $query->paginate(20),
         ])->layout('layouts.app');
     }
