@@ -4,14 +4,31 @@ namespace App\Livewire;
 
 use App\Models\Products;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ProductSearch extends Component
 {
-    public $search = '';
+    use WithPagination;
+
+    public string $search = '';
+
+    protected $queryString = ['search'];
     public function render()
     {
+        $query = Products::query();
+        if($this->search){
+            $query->where('title', 'like', "%{$this->search}%")
+                ->orWhere('description', 'like', "%{$this->search}%");
+        }
+
         return view('livewire.product-search', [
-           'products' => Products::where($this->search)
+            'products' => $query->paginate(20),
         ])->layout('layouts.app');
+    }
+
+    public function updated($property){
+        if($property == 'search'){
+            $this->resetPage();
+        }
     }
 }
